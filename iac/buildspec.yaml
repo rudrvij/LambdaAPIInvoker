@@ -1,8 +1,11 @@
 version: 0.1
 phases:
   install:
+    runtime-versions:
+      dotnet: 3.1
+  build:
     commands:
-      - aws cloudformation package --template-file iac/template.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-oww4c3mqhsxf --output-template-file outputTemplate.yaml
+      - sam package --template-file iac/template.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-oww4c3mqhsxf --output-template-file outputTemplate.yaml
 artifacts:
   type: zip
   files:
