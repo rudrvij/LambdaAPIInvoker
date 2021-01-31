@@ -53,7 +53,7 @@ namespace LambdaAPIInvoker
         public async Task<string> FunctionHandler(string input, ILambdaContext context)
         {
             var c = await apiInvoker.InvokeApi(input);
-            return "Completed";
+            return "Completed1";
         }
     }
 }
