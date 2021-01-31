@@ -1,7 +1,9 @@
-﻿namespace LambdaAPIInvoker
+﻿using System.Threading.Tasks;
+
+namespace LambdaAPIInvoker
 {
     public interface IApiInvoker
     {
-        bool InvokeApi(string payload);
+        Task<bool> InvokeApi(string payload);
     }
 }

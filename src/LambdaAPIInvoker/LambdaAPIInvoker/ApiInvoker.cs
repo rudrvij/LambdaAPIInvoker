@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace LambdaAPIInvoker
 {
@@ -12,14 +13,27 @@ namespace LambdaAPIInvoker
             this.logger = logger;
             this.httpClient = httpClient;
         }
-        public bool InvokeApi(string payload)
+        public async Task<bool> InvokeApi(string payload)
         {
-            logger.LogInformation($"Logging Information");
-            logger.LogWarning($"Logging Warning");
-            logger.LogError($"Logging Error");
-            logger.LogCritical($"Logging Critical");
+            string url = "/";
+            logger.LogInformation($"Hitting with the following data {payload}");
+                        
+            var response = await this.httpClient.GetAsync(url);
+
+            var result = await response.Content.ReadAsStringAsync();
+
+
+            if (!response.IsSuccessStatusCode)
+            {
+                logger.LogError($"ERROR");
+                throw new HttpRequestException("Error");
+            }
+                
+
+            logger.LogInformation($"Successful");
 
             return true;
+
         }
     }
 }
