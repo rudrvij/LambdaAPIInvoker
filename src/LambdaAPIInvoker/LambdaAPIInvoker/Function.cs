@@ -1,6 +1,6 @@
 using System;
 using System.Net.Http.Headers;
-
+using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -50,9 +50,9 @@ namespace LambdaAPIInvoker
         /// <param name="input"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public string FunctionHandler(string input, ILambdaContext context)
+        public async Task<string> FunctionHandler(string input, ILambdaContext context)
         {
-            apiInvoker.InvokeApi(input);
+            var c = await apiInvoker.InvokeApi(input);
             return "Completed";
         }
     }
