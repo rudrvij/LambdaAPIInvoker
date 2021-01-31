@@ -9,8 +9,7 @@ phases:
       dotnet: 3.1
     commands:
       - echo Restore started on `date`
-      - export PATH="$PATH:/root/.dotnet/tools"
-      - pip install --upgrade awscli
+      - export PATH="$PATH:/root/.dotnet/tools"      
       - cd src
       - cd LambdaAPIInvoker
       - cd LambdaAPIInvoker
