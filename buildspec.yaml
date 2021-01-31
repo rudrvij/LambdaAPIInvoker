@@ -20,6 +20,9 @@ phases:
     commands:
       - echo Build started on `date`
       - dotnet publish -c Release
+      - cd..
+      - cd..
+      - cd..
       - aws cloudformation package --template-file template.yaml --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-oww4c3mqhsxf --output-template-file outputTemplate.yaml
 artifacts:
   type: zip
